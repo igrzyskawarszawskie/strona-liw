@@ -776,7 +776,15 @@ section { padding: var(--section-pad) 2rem; }
 /*  grid-template-columns: repeat(3, 1fr); */
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
+
+.gallery-grid-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
 .gallery-placeholder {
   background: var(--dark-3);
   border: 1px solid rgba(255,255,255,0.06);
@@ -796,7 +804,6 @@ section { padding: var(--section-pad) 2rem; }
   grid-column: span 2;
   font-size: 1rem;
 }
-
 /* ════════════════════════════════════════════════════
    SOCIAL
    ════════════════════════════════════════════════════ */
