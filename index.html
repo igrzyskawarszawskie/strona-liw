@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Letnie Igrzyska Warszawskie 2026</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">LIW<span class="nav-logo-year">'26</span></div>
+      <ul class="nav-links">
+        <li><a href="#o-wydarzeniu">O wydarzeniu</a></li>
+        <li><a href="#harmonogram">Harmonogram</a></li>
+        <li><a href="#konkurencje">Konkurencje</a></li>
+        <li><a href="#miejsce">Miejsce</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#o-wydarzeniu" class="mm-link">O wydarzeniu</a></li>
+      <li><a href="#harmonogram" class="mm-link">Harmonogram</a></li>
+      <li><a href="#konkurencje" class="mm-link">Konkurencje</a></li>
+      <li><a href="#miejsce" class="mm-link">Miejsce</a></li>
+      <li><a href="#kontakt" class="mm-link">Kontakt</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-stripe hero-stripe--1"></div>
+      <div class="hero-stripe hero-stripe--2"></div>
+      <div class="hero-stripe hero-stripe--3"></div>
+      <div class="hero-rings">
+        <div class="ring ring--1"></div>
+        <div class="ring ring--2"></div>
+        <div class="ring ring--3"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        Warszawa · 22 czerwca 2026
+        <span class="eyebrow-dot"></span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="hero-title-line">Letnie</span>
+        <span class="hero-title-line hero-title-line--accent">Igrzyska</span>
+        <span class="hero-title-line">Warszawskie</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Międzyszkolne zawody lekkoatletyczne dla uczniów<br>
+        warszawskich szkół ponadpodstawowych
+      </p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          22 czerwca 2026
+        </div>
+        <div class="hero-meta-divider"></div>
+        <div class="hero-meta-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Stadion „Podskarbińska", Warszawa
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#harmonogram" class="btn btn--primary">Zobacz harmonogram</a>
+        <a href="#konkurencje" class="btn btn--secondary">Poznaj konkurencje</a>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-bar">
+      <div class="countdown-label">Do rozpoczęcia igrzysk pozostało</div>
+      <div class="countdown-blocks">
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-days">--</span>
+          <span class="countdown-unit">dni</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-hours">--</span>
+          <span class="countdown-unit">godzin</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-minutes">--</span>
+          <span class="countdown-unit">minut</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block">
+          <span class="countdown-num" id="cd-seconds">--</span>
+          <span class="countdown-unit">sekund</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <span>Przewiń w dół</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       O WYDARZENIU
+  ═══════════════════════════════════════════════ -->
+  <section id="o-wydarzeniu">
+    <div class="section-inner">
+      <div class="section-label">01 — O wydarzeniu</div>
+      <div class="about-grid">
+        <div class="about-headline">
+          <h2 class="section-title">Olimpijski<br><em>duch</em><br>w sercu<br>Warszawy</h2>
+          <div class="about-accent-line"></div>
+        </div>
+        <div class="about-body">
+          <p>Letnie Igrzyska Warszawskie to międzyszkolna inicjatywa młodzieżowa organizowana przez uczniów <strong>XXXIII Liceum Ogólnokształcącego Dwujęzycznego im. Mikołaja Kopernika w Warszawie</strong>.</p>
+          <p>Celem projektu jest stworzenie jednodniowego wydarzenia sportowego inspirowanego formułą igrzysk olimpijskich, które umożliwi uczniom warszawskich szkół ponadpodstawowych udział w rywalizacji lekkoatletycznej w profesjonalnych warunkach.</p>
+          <p>Wydarzenie jest otwarte dla uczniów różnych warszawskich liceów i ma promować aktywność fizyczną, zdrowy styl życia oraz integrację młodzieży z różnych środowisk szkolnych.</p>
+
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">12</span>
+              <span class="stat-label">dyscyplin</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">~10h</span>
+              <span class="stat-label">zawodów</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">48</span>
+              <span class="stat-label">zawodników / szkoła</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">0 zł</span>
+              <span class="stat-label">wpisowe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       HARMONOGRAM
+  ═══════════════════════════════════════════════ -->
+  <section id="harmonogram">
+    <div class="section-inner">
+      <div class="section-label">02 — Harmonogram</div>
+      <h2 class="section-title section-title--center">22 <span class="title-month">czerwca</span> 2026</h2>
+
+      <div class="timeline">
+        <div class="timeline-item timeline-item--highlight">
+          <div class="timeline-time">08:30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge">Start</div>
+            <div class="timeline-event">Otwarcie bram</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">09:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-event">Ceremonia otwarcia</div>
+          </div>
+        </div>
+        <div class="timeline-item timeline-item--block">
+          <div class="timeline-time">09.30</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-event">Rozpoczęcie rywalizacji</div>
+          </div>
+        </div>
+        <div class="timeline-item timeline-item--break">
+          <div class="timeline-time">13.00-14.00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge timeline-badge--break">Przerwa</div>
+            <div class="timeline-event">Przerwa obiadowa</div>
+          </div>
+        </div>
+        <div class="timeline-item timeline-item--block">
+          <div class="timeline-time">14:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-event">Dalsza część rywalizacji</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">18:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-event">Ceremonia udekorowania zwycięzców</div>
+          </div>
+        </div>
+<!--    <div class="timeline-item">
+          <div class="timeline-time">21:37</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-event">BLBLBLBL</div>
+          </div>
+        </div> -->
+        <div class="timeline-item timeline-item--highlight timeline-item--end">
+          <div class="timeline-time">19:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge">Koniec</div>
+            <div class="timeline-event">Zakończenie wydarzenia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       KONKURENCJE
+  ═══════════════════════════════════════════════ -->
+  <section id="konkurencje">
+    <div class="section-inner">
+      <div class="section-label">03 — Konkurencje</div>
+      <h2 class="section-title">Program<br>zawodów</h2>
+
+      <p class="competitions-intro">Każda szkoła może wystawić określoną liczbę zawodników w poszczególnych konkurencjach.</p>
+
+      <div class="competitions-grid">
+
+        <!-- BIEGI -->
+        <div class="comp-card">
+          <div class="comp-card-header comp-card-header--biegi">
+            <div class="comp-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4a1 1 0 100-2 1 1 0 000 2z" fill="currentColor" stroke="none"/><path d="M7 20l3-8 3 3 2-4 3 5"/><path d="M3 15l4-4 3 2 3-3"/></svg>
+            </div>
+            <h3>Biegi</h3>
+          </div>
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Konkurencja</th>
+                <th>♂</th>
+                <th>♀</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>100 m</td><td>2</td><td>2</td></tr>
+              <tr><td>200 m</td><td>2</td><td>2</td></tr>
+              <tr><td>400 m</td><td>2</td><td>2</td></tr>
+              <tr><td>800 m</td><td>2</td><td>2</td></tr>
+              <tr><td>1600 m</td><td>2</td><td>2</td></tr>
+              <tr><td>Sztafeta 4 × 100 m</td><td>4</td><td>4</td></tr>
+              <tr><td>Bieg przez płotki 110 m / 100 m</td><td>2</td><td>2</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- RZUTY + SKOKI -->
+        <div class="comp-col">
+          <div class="comp-card">
+            <div class="comp-card-header comp-card-header--rzuty">
+              <div class="comp-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <h3>Rzuty</h3>
+            </div>
+            <table class="comp-table">
+              <thead>
+                <tr><th>Konkurencja</th><th>♂</th><th>♀</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Pchnięcie kulą</td><td>2</td><td>2</td></tr>
+                <tr><td>Rzut piłką lekarską</td><td>2</td><td>2</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="comp-card">
+            <div class="comp-card-header comp-card-header--skoki">
+              <div class="comp-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <h3>Skoki</h3>
+            </div>
+            <table class="comp-table">
+              <thead>
+                <tr><th>Konkurencja</th><th>♂</th><th>♀</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Skok wzwyż</td><td>2</td><td>2</td></tr>
+                <tr><td>Skok w dal z miejsca</td><td>2</td><td>2</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- INTEGRACYJNA -->
+          <div class="comp-card comp-card--special">
+            <div class="comp-card-header comp-card-header--special">
+              <div class="comp-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <h3>Konkurencja integracyjna</h3>
+            </div>
+            <div class="comp-special-body">
+              <div class="comp-special-name">Przeciąganie liny</div>
+              <div class="comp-special-detail">6 zawodników + 6 zawodniczek<br>Punkty dodatkowe do klasyfikacji szkół</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-limit-banner">
+        <div class="comp-limit-icon">🏅</div>
+        <div>
+          <strong>Maksymalna liczba zawodników per szkoła:</strong>
+          24 zawodników + 24 zawodniczki = <strong>48 uczestników</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       MIEJSCE
+  ═══════════════════════════════════════════════ -->
+  <section id="miejsce">
+    <div class="section-inner">
+      <div class="section-label">04 — Miejsce</div>
+      <div class="venue-grid">
+        <div class="venue-info">
+          <h2 class="section-title">Stadion<br><em>Podskarbińska</em></h2>
+          <div class="venue-address">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              ul. Wojciecha Chrzanowskiego 23<br>
+              04-394 Warszawa<br>
+              <span class="venue-district">Praga-Południe</span>
+            </div>
+          </div>
+          <p class="venue-desc">Zawody odbędą się na stadionie lekkoatletycznym „Podskarbińska" na warszawskiej Pradze-Południe. Obiekt posiada pełnowymiarową bieżnię lekkoatletyczną oraz infrastrukturę umożliwiającą przeprowadzenie wszystkich konkurencji biegowych, skokowych i rzutowych.</p>
+          <a href="https://maps.google.com/?q=ul.+Wojciecha+Chrzanowskiego+23,+Warszawa" target="_blank" rel="noopener" class="btn btn--outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Otwórz w Google Maps
+          </a>
+        </div>
+        <div class="venue-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.5480484138857!2d21.073958976664873!3d52.25159227199204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecd877118b52b%3A0x134a9a03c63547f6!2sStadion%20Podskarbi%C5%84ska!5e0!3m2!1sen!2spl!4v1773213657566!5m2!1sen!2spl"
+            width="100%" height="380" style="border:0;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>  
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SPONSORZY
+  ═══════════════════════════════════════════════ -->
+  <section id="sponsorzy">
+    <div class="section-inner">
+      <div class="section-label">05 — Sponsorzy i Partnerzy</div>
+      <h2 class="section-title section-title--center">Wspierają<br>nasze igrzyska</h2>
+
+      <div class="sponsors-tier">
+        <div class="sponsors-tier-label">Sponsor główny</div>
+        <div class="sponsors-logos sponsors-logos--main">
+          <div class="sponsor-placeholder sponsor-placeholder--lg">LOGO</div>
+        </div>
+      </div>
+
+      <div class="sponsors-tier">
+        <div class="sponsors-tier-label">Partnerzy wydarzenia</div>
+        <div class="sponsors-logos">
+          <div class="sponsor-placeholder">LOGO</div>
+          <div class="sponsor-placeholder">LOGO</div>
+          <div class="sponsor-placeholder">LOGO</div>
+        </div>
+      </div>
+
+      <div class="sponsors-tier">
+        <div class="sponsors-tier-label">Patronat honorowy</div>
+        <div class="sponsors-logos">
+          <div class="patron-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Patronat honorowy Prezydenta m.st. Warszawy
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       GALERIA
+  ═══════════════════════════════════════════════ -->
+  <section id="galeria">
+    <div class="section-inner">
+      <div class="section-label">06 — Galeria</div>
+      <h2 class="section-title section-title--center">Zdjęcia</h2>
+      <div class="gallery-grid">
+<!--    <div class="gallery-placeholder gallery-placeholder--wide">📸 Zdjęcia pojawią się wkrótce</div> -->
+        <img src="gallery/stadion_liw.jpg" alt="Stadion LIW" class="gallery-img">
+        <div class="gallery-placeholder">Przygotowania</div>
+        <div class="gallery-placeholder">Organizatorzy</div>
+        <div class="gallery-placeholder">Wydarzenia organizacyjne</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SOCIAL MEDIA
+  ═══════════════════════════════════════════════ -->
+  <section id="social">
+    <div class="social-inner">
+      <div class="social-text">
+        <h2 class="social-title">Śledź przygotowania<br>do Igrzysk</h2>
+        <p>Bądź na bieżąco z wszystkimi aktualnościami, wynikami i wydarzeniami organizacyjnymi.</p>
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/igrzyska.warszawskie/" class="social-btn social-btn--ig" aria-label="Instagram">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="#" class="social-btn social-btn--tt" aria-label="TikTok">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       KONTAKT
+  ═══════════════════════════════════════════════ -->
+  <section id="kontakt">
+    <div class="section-inner">
+      <div class="section-label">07 — Kontakt</div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 class="section-title">Masz<br>pytania?</h2>
+          <p>Komitet Organizacyjny Letnich Igrzysk Warszawskich pozostaje do dyspozycji.</p>
+          <a href="mailto:igrzyska.warszawskie@gmail.com" class="contact-email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            igrzyska.warszawskie@gmail.com
+          </a>
+        </div>
+        <div class="contact-organizers">
+          <div class="contact-organizers-label">Organizatorzy</div>
+          <ul class="organizers-list">
+            <li>
+              <div class="organizer-avatar">AP</div>
+              <div class="organizer-details">
+                <strong>Anna Pokładek</strong>
+              </div>
+            </li>
+            <li>
+              <div class="organizer-avatar">FB</div>
+              <div class="organizer-details">
+                <strong>Filip Biernat</strong>
+              </div>
+            </li>
+            <li>
+              <div class="organizer-avatar">BG</div>
+              <div class="organizer-details">
+                <strong>Borys Grauer</strong>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">LIW <span>'26</span></div>
+      <div class="footer-school">
+        XXXIII Liceum Ogólnokształcące Dwujęzyczne<br>
+        im. Mikołaja Kopernika · Warszawa
+      </div>
+      <div class="footer-copy">© 2026 Letnie Igrzyska Warszawskie Szkół Ponadpodstawowych</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── COUNTDOWN ──────────────────────────────────────────────────
+    function updateCountdown() {
+      const target = new Date('2026-06-22T09:00:00');
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.querySelector('.countdown-bar').innerHTML = '<div class="countdown-label countdown-label--live">🔴 Igrzyska trwają!</div>';
+        return;
+      }
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('cd-days').textContent    = String(days).padStart(2,'0');
+      document.getElementById('cd-hours').textContent   = String(hours).padStart(2,'0');
+      document.getElementById('cd-minutes').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('cd-seconds').textContent = String(seconds).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── NAVBAR SCROLL ──────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── MOBILE MENU ────────────────────────────────────────────────
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mm-link').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ── SCROLL REVEAL ──────────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.timeline-item, .comp-card, .stat, .organizers-list li').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
