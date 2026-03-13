@@ -122,6 +122,239 @@
       <div class="scroll-arrow"></div>
     </div>
   </section>
+  <!-- ═══════════════════════════════════════════════
+       FORMULARZ ZAPISOWY
+  ═══════════════════════════════════════════════ -->
+  <div class="sep"></div>
+  
+  <div class="reg-section" id="zapisy">
+  
+    <!-- HEADER -->
+    <p class="section-label">Rejestracja zawodników</p>
+    <h2>Formularz zapisowy</h2>
+    <p class="intro-text">Zgłoś zawodników ze swojej szkoły do nawet dwunastu dyscyplin! Możesz zapisać więcej zawodników niż dozwolone - będą oni rezerwowymi. KOLEJNOŚĆ MA ZNACZENIE.</p>
+  
+    <!-- FORM -->
+    <form id="regForm" novalidate>
+  
+      <!-- DANE OPIEKUNA -->
+      <div class="contact-grid">
+        <div class="field-group">
+          <label class="field-label" for="guardian">Imię i nazwisko opiekuna *</label>
+          <input type="text" id="guardian" name="guardian" placeholder="Jan Kowalski" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="school">Szkoła *</label>
+          <input type="text" id="school" name="school" placeholder="Pełna nazwa szkoły" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="email">Email kontaktowy *</label>
+          <input type="email" id="email" name="email" placeholder="opiekun@szkola.pl" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="phone">Telefon kontaktowy</label>
+          <input type="tel" id="phone" name="phone" placeholder="+48 000 000 000">
+        </div>
+      </div>
+  
+      <!-- DYSCYPLINY -->
+      <div class="disciplines-header">
+        <div>
+          <p class="section-label" style="margin:0">Dyscypliny i zawodnicy</p>
+        </div>
+        <div class="disc-counter">Dodano: <span id="disc-count">0</span> / 12</div>
+      </div>
+  
+      <div id="disc-list"></div>
+  
+      <button type="button" class="btn-add-disc" id="btn-add-disc">
+        <span class="plus">+</span> Dodaj dyscyplinę
+      </button>
+  
+      <!-- SUBMIT -->
+      <button type="submit" class="submit-btn" id="submitBtn">Wyślij zgłoszenie</button>
+      <div class="form-status" id="formStatus"></div>
+  
+    </form>
+  
+    <!-- CONFIRM -->
+    <div id="reg-confirm">
+      <div class="medal">🏅</div>
+      <h3>Zgłoszenie przyjęte!</h3>
+      <p>Dziękujemy za rejestrację. Skontaktujemy się wkrótce z potwierdzeniem i szczegółami organizacyjnymi.</p>
+    </div>
+  
+  </div>
+  
+  <script>
+    const DISCIPLINES = [
+      { value: 'bieg_60m',     label: 'Bieg na 100 m',          tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_100m',    label: 'Bieg na 200 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_200m',    label: 'Bieg na 400 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_400m',    label: 'Bieg na 800 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_800m',    label: 'Bieg na 1600 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'sztafeta',     label: 'Sztafeta 4×200 m',      tag: '4 kobiety + 4 mężczyzn' },
+      { value: 'skok_dal',     label: 'Bieg przez płotki 110 m /100 m',            tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'skok_wzwyz',   label: 'Pchnięcie kulą',            tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'kula',         label: 'Rzut piłką lekarską',        tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'dysk',         label: 'Skok wzwyż',          tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'oszczep',      label: 'Skok w dal z miejsca',        tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'integracja',   label: 'Przeciąganie liny', tag: '6 kobiet + 6 mężczyzn, którzy są zapisani na co najmniej jedną inną dyscyplinę' },
+    ];
+  
+    const MAX_DISCS = 12;
+    let discBoxes = [];
+    let discIdCounter = 0;
+  
+    const discList   = document.getElementById('disc-list');
+    const btnAddDisc = document.getElementById('btn-add-disc');
+    const discCount  = document.getElementById('disc-count');
+  
+    function updateCounter() {
+      discCount.textContent = discBoxes.length;
+      btnAddDisc.disabled = discBoxes.length >= MAX_DISCS;
+    }
+  
+    function buildSelectOptions(selectedValue) {
+      return DISCIPLINES.map(d =>
+        `<option value="${d.value}" ${d.value === selectedValue ? 'selected' : ''}>${d.label}</option>`
+      ).join('');
+    }
+  
+    function addDiscBox(disciplineValue) {
+      const id = ++discIdCounter;
+      const defDisc = DISCIPLINES.find(d => d.value === disciplineValue) || DISCIPLINES[0];
+  
+      const box = document.createElement('div');
+      box.className = 'disc-box';
+      box.dataset.id = id;
+  
+      box.innerHTML = `
+        <div class="disc-box-header">
+          <div style="flex:1">
+            <select class="disc-select" data-id="${id}">
+              ${buildSelectOptions(defDisc.value)}
+            </select>
+            <div class="disc-subtitle" id="subtitle-${id}">${defDisc.tag}</div>
+          </div>
+          <button type="button" class="btn-remove-disc" title="Usuń dyscyplinę">×</button>
+        </div>
+        <div class="athletes-body">
+          <div class="athlete-row-labels">
+            <span>Imię</span><span>Nazwisko</span><span>Data ur.</span><span></span>
+          </div>
+          <div class="athlete-rows" id="athletes-${id}"></div>
+          <button type="button" class="btn-add-athlete">+ dodaj zawodnika</button>
+        </div>
+      `;
+  
+      // remove disc
+      box.querySelector('.btn-remove-disc').addEventListener('click', () => {
+        box.remove();
+        discBoxes = discBoxes.filter(b => b.id !== id);
+        updateCounter();
+      });
+  
+      // change discipline
+      box.querySelector('.disc-select').addEventListener('change', function() {
+        const found = DISCIPLINES.find(d => d.value === this.value);
+        document.getElementById(`subtitle-${id}`).textContent = found ? found.tag : '';
+      });
+  
+      // add athlete
+      box.querySelector('.btn-add-athlete').addEventListener('click', () => {
+        addAthleteRow(id);
+      });
+  
+      discList.appendChild(box);
+      discBoxes.push({ id });
+      updateCounter();
+      addAthleteRow(id); // start with 1 row
+    }
+  
+    function addAthleteRow(discId) {
+      const container = document.getElementById(`athletes-${discId}`);
+      const row = document.createElement('div');
+      row.className = 'athlete-row';
+      row.innerHTML = `
+        <input type="text" placeholder="Imię" class="a-name">
+        <input type="text" placeholder="Nazwisko" class="a-surname">
+        <input type="date" class="a-dob" title="Data urodzenia">
+        <button type="button" class="remove-athlete" title="Usuń zawodnika">×</button>
+      `;
+      row.querySelector('.remove-athlete').addEventListener('click', () => row.remove());
+      container.appendChild(row);
+    }
+  
+    btnAddDisc.addEventListener('click', () => {
+      if (discBoxes.length < MAX_DISCS) addDiscBox();
+    });
+  
+    // ── SUBMIT ──
+    document.getElementById('regForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+  
+      const guardian = document.getElementById('guardian').value.trim();
+      const school   = document.getElementById('school').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const phone    = document.getElementById('phone').value.trim();
+  
+      if (!guardian || !school || !email) {
+        showStatus('Proszę wypełnić wszystkie wymagane pola (opiekun, szkoła, email).', 'error');
+        return;
+      }
+  
+      // collect disciplines
+      const disciplines = [];
+      discList.querySelectorAll('.disc-box').forEach(box => {
+        const discValue = box.querySelector('.disc-select').value;
+        const discLabel = DISCIPLINES.find(d => d.value === discValue)?.label || discValue;
+        const athletes  = [];
+        box.querySelectorAll('.athlete-row').forEach(row => {
+          const name    = row.querySelector('.a-name').value.trim();
+          const surname = row.querySelector('.a-surname').value.trim();
+          const dob     = row.querySelector('.a-dob').value;
+          if (name || surname) athletes.push({ name, surname, dob });
+        });
+        disciplines.push({ discipline: discValue, disciplineLabel: discLabel, athletes });
+      });
+  
+      const payload = { guardian, school, email, phone, disciplines };
+  
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Wysyłanie…';
+  
+      try {
+        const res = await fetch('/.netlify/functions/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+  
+        const data = await res.json();
+  
+        if (res.ok) {
+          document.getElementById('regForm').style.display = 'none';
+          document.getElementById('reg-confirm').style.display = 'block';
+        } else {
+          showStatus(data.error || 'Wystąpił błąd. Spróbuj ponownie.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Wyślij zgłoszenie';
+        }
+      } catch (err) {
+        showStatus('Błąd połączenia. Sprawdź internet i spróbuj ponownie.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Wyślij zgłoszenie';
+      }
+    });
+  
+    function showStatus(msg, type) {
+      const el = document.getElementById('formStatus');
+      el.textContent = msg;
+      el.className = `form-status ${type}`;
+    }
+  </script>
 
   <!-- ═══════════════════════════════════════════════
        O WYDARZENIU
@@ -438,11 +671,11 @@
         <p>Bądź na bieżąco z wszystkimi aktualnościami, wynikami i wydarzeniami organizacyjnymi.</p>
       </div>
       <div class="social-links">
-        <a href="https://www.instagram.com/igrzyska.warszawskie/" class="social-btn social-btn--ig" aria-label="Instagram">
+        <a href="https://www.instagram.com/igrzyska.warszawskie/" class="social-btn social-btn--ig" target="_blank" aria-label="Instagram">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           Instagram
         </a>
-        <a href="#" class="social-btn social-btn--tt" aria-label="TikTok">
+        <a href="#" class="social-btn social-btn--tt" target="_blank" aria-label="TikTok">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
           TikTok
         </a>
@@ -460,7 +693,7 @@
         <div class="contact-info">
           <h2 class="section-title">Masz<br>pytania?</h2>
           <p>Komitet Organizacyjny Letnich Igrzysk Warszawskich pozostaje do dyspozycji.</p>
-          <a href="mailto:igrzyska.warszawskie@gmail.com" class="contact-email">
+          <a href="mailto:igrzyskawarszawskie@gmail.com" class="contact-email">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             igrzyska.warszawskie@gmail.com
           </a>
