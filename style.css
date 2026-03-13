@@ -19,6 +19,14 @@
   --muted:   #6b7fa0;
   --light:   #e8edf5;
   --white:   #ffffff;
+   
+  --orange: #f98d16;
+  --orange-d: #d6730a;
+  --dark: #0a0e15; 
+  --white: #ffffff;
+  --text-white: #e8edf5;
+  --red: #c0392b;
+  }
 
   --font-display: 'Bebas Neue', 'Barlow Condensed', sans-serif;
   --font-cond:    'Barlow Condensed', sans-serif;
@@ -406,21 +414,12 @@ section { padding: var(--section-pad) 2rem; }
 /* ════════════════════════════════════════════════════
    FORMULARZ ZAPISOWY
    ════════════════════════════════════════════════════ */
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --navy-dark: #07111F;
-    --cream: #F5F0E8;
-    --text-light: #D4CCB8;
-    --red: #C0392B;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--navy-dark);
-    color: var(--cream);
+    background: var(--dark);
+    color: var(--white);
     font-family: 'Crimson Pro', Georgia, serif;
     font-weight: 300;
     overflow-x: hidden;
@@ -443,7 +442,7 @@ section { padding: var(--section-pad) 2rem; }
   .section-label {
     font-family: 'Crimson Pro', serif;
     font-style: italic;
-    color: var(--gold);
+    color: var(--orange);
     letter-spacing: .2em;
     font-size: 13px;
     text-transform: uppercase;
@@ -454,14 +453,14 @@ section { padding: var(--section-pad) 2rem; }
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(36px, 6vw, 64px);
     letter-spacing: .04em;
-    color: var(--cream);
+    color: var(--white);
     line-height: 1;
     margin-bottom: 12px;
   }
 
   .intro-text {
     font-size: clamp(15px, 2vw, 18px);
-    color: var(--text-light);
+    color: var(--text-white);
     line-height: 1.8;
     margin-bottom: 48px;
     max-width: 640px;
@@ -473,14 +472,14 @@ section { padding: var(--section-pad) 2rem; }
     font-size: 11px;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--orange);
     margin-bottom: 7px;
   }
 
   input, select, textarea {
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(201,168,76,.25);
-    color: var(--cream);
+    color: var(--white);
     font-family: 'Crimson Pro', serif;
     font-size: 17px;
     padding: 12px 16px;
@@ -494,11 +493,11 @@ section { padding: var(--section-pad) 2rem; }
   input::placeholder, textarea::placeholder { color: rgba(212,204,184,.3); }
 
   input:focus, select:focus, textarea:focus {
-    border-color: var(--gold);
+    border-color: var(--orange);
     background: rgba(201,168,76,.05);
   }
 
-  select option { background: var(--navy-dark); color: var(--cream); }
+  select option { background: var(--dark); color: var(--white); }
 
   .field-group { display: flex; flex-direction: column; }
 
@@ -525,12 +524,12 @@ section { padding: var(--section-pad) 2rem; }
   .disc-counter {
     font-family: 'Crimson Pro', serif;
     font-style: italic;
-    color: var(--text-light);
+    color: var(--text-white);
     font-size: 14px;
   }
 
   .disc-counter span {
-    color: var(--gold);
+    color: var(--orange);
     font-style: normal;
     font-weight: 400;
   }
@@ -565,7 +564,7 @@ section { padding: var(--section-pad) 2rem; }
   .disc-box-header select {
     border: none;
     background: transparent;
-    color: var(--cream);
+    color: var(--white);
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
     letter-spacing: .06em;
@@ -580,13 +579,13 @@ section { padding: var(--section-pad) 2rem; }
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
     letter-spacing: .06em;
-    color: var(--cream);
+    color: var(--white);
   }
 
   .disc-subtitle {
     font-style: italic;
     font-size: 13px;
-    color: var(--gold);
+    color: var(--orange);
     letter-spacing: .08em;
   }
 
@@ -662,7 +661,7 @@ section { padding: var(--section-pad) 2rem; }
   .btn-add-athlete {
     background: none;
     border: 1px dashed rgba(201,168,76,.3);
-    color: var(--gold);
+    color: var(--orange);
     font-family: 'Crimson Pro', serif;
     font-style: italic;
     font-size: 14px;
@@ -676,7 +675,7 @@ section { padding: var(--section-pad) 2rem; }
   }
 
   .btn-add-athlete:hover {
-    border-color: var(--gold);
+    border-color: var(--orange);
     background: rgba(201,168,76,.05);
   }
 
@@ -685,7 +684,7 @@ section { padding: var(--section-pad) 2rem; }
     width: 100%;
     border: 1px dashed rgba(201,168,76,.35);
     background: none;
-    color: var(--gold-light);
+    color: var(--orange-d);
     font-family: 'Bebas Neue', sans-serif;
     font-size: 18px;
     letter-spacing: .12em;
@@ -701,7 +700,7 @@ section { padding: var(--section-pad) 2rem; }
 
   .btn-add-disc:hover {
     background: rgba(201,168,76,.06);
-    border-color: var(--gold);
+    border-color: var(--orange);
   }
 
   .btn-add-disc:disabled {
@@ -717,8 +716,8 @@ section { padding: var(--section-pad) 2rem; }
   /* ── SUBMIT ── */
   .submit-btn {
     width: 100%;
-    background: var(--gold);
-    color: var(--navy-dark);
+    background: var(--orange);
+    color: var(--dark);
     font-family: 'Bebas Neue', sans-serif;
     font-size: 22px;
     letter-spacing: .15em;
@@ -729,7 +728,7 @@ section { padding: var(--section-pad) 2rem; }
   }
 
   .submit-btn:hover {
-    background: var(--gold-light);
+    background: var(--orange-d);
     transform: translateY(-2px);
   }
 
@@ -752,7 +751,7 @@ section { padding: var(--section-pad) 2rem; }
     display: block;
     border-color: rgba(201,168,76,.4);
     background: rgba(201,168,76,.07);
-    color: var(--gold-light);
+    color: var(--orange-d);
   }
 
   .form-status.error {
@@ -774,12 +773,12 @@ section { padding: var(--section-pad) 2rem; }
   #reg-confirm h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 48px;
-    color: var(--gold);
+    color: var(--orange);
     letter-spacing: .06em;
     margin-bottom: 12px;
   }
 
-  #reg-confirm p { color: var(--text-light); font-size: 18px; }
+  #reg-confirm p { color: var(--text-white); font-size: 18px; }
 
 /* ════════════════════════════════════════════════════
    O WYDARZENIU
