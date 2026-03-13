@@ -1,0 +1,7 @@
+{
+  "name": "letnie-igrzyska-warszawskie",
+  "version": "1.0.0",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}
