@@ -26,7 +26,7 @@ export default async (req, context) => {
   const { guardian, school, email, phone, disciplines } = body;
 
   // walidacja
-  if (!guardian || !school || !email) {
+  if (!guardian || !school || !email || !disciplines) {
     return new Response(JSON.stringify({ error: 'Brakuje wymaganych pól.' }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
@@ -61,8 +61,8 @@ export default async (req, context) => {
       CREATE TABLE IF NOT EXISTS athletes (
         id                  SERIAL PRIMARY KEY,
         discipline_entry_id INTEGER REFERENCES discipline_entries(id) ON DELETE CASCADE,
-        name                TEXT,
-        surname             TEXT,
+        name                TEXT NOT NULL,
+        surname             TEXT NOT NULL,
         date_of_birth       DATE
       )
     `;
