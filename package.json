@@ -1,6 +1,9 @@
 {
   "name": "letnie-igrzyska-warszawskie",
   "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'build complete'"
+  },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4"
   }
