@@ -874,10 +874,10 @@ section { padding: var(--section-pad) 2rem; }
   color: var(--muted);
   text-align: right;
   padding-top: 2px;
-  padding-right: 3px;
+  padding-right: 5px;
   transition: color var(--transition);
 }
-.timeline-time-extreme {padding-right: 8px;}
+.timeline-time-extreme {padding-right: 7px;}
 
 .timeline-item:hover .timeline-time { color: var(--orange); }
 
