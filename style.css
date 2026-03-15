@@ -1100,6 +1100,7 @@ section { padding: var(--section-pad) 2rem; }
 .sponsors-logos {
   display: flex; flex-wrap: wrap; gap: 1.5rem;
   align-items: center;
+  justify-content: center;
 }
 .sponsors-logos--main { justify-content: center; }
 
