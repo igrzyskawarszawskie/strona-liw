@@ -1119,6 +1119,7 @@ section { padding: var(--section-pad) 2rem; }
 .sponsor-placeholder:hover { border-color: rgba(255,255,255,0.25); }
 .sponsor-placeholder--lg { width: 280px; height: 100px; font-size: 1rem; }
 
+<!-- CHYBA NIEPOTRZEBNE ZOBACZYMY CZY ZADZIAŁA;P
 .patron-badge {
   display: flex; align-items: center; gap: 0.75rem;
   background: linear-gradient(135deg, rgba(249,141,22,0.08), rgba(8,79,145,0.08));
@@ -1132,7 +1133,7 @@ section { padding: var(--section-pad) 2rem; }
   color: var(--orange);
 }
 .patron-badge svg { color: var(--orange); flex-shrink: 0; }
-
+-->
 /* ════════════════════════════════════════════════════
    GALERIA
    ════════════════════════════════════════════════════ */
