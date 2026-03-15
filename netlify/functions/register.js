@@ -1,21 +1,34 @@
+// v3 - esbuild compatible
 const { neon } = require('@neondatabase/serverless');
 
-exports.handler = async function(event, context) {
+exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
+    return {
+      statusCode: 405,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
   }
 
   let body;
   try {
     body = JSON.parse(event.body);
   } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Nieprawidłowy format danych.' }) };
+    return {
+      statusCode: 400,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Nieprawidłowy format danych.' })
+    };
   }
 
   const { guardian, school, email, phone, disciplines } = body;
 
   if (!guardian || !school || !email) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Brakuje wymaganych pól.' }) };
+    return {
+      statusCode: 400,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Brakuje wymaganych pól.' })
+    };
   }
 
   const sql = neon(process.env.DATABASE_URL);
@@ -69,10 +82,18 @@ exports.handler = async function(event, context) {
       }
     }
 
-    return { statusCode: 200, body: JSON.stringify({ success: true, registrationId: reg.id }) };
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ success: true, registrationId: reg.id })
+    };
 
   } catch (err) {
     console.error('DB error:', err);
-    return { statusCode: 500, body: JSON.stringify({ error: 'Błąd bazy danych.' }) };
+    return {
+      statusCode: 500,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ error: 'Błąd bazy danych: ' + err.message })
+    };
   }
 };
