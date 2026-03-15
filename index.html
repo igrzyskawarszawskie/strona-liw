@@ -188,18 +188,18 @@
   
   <script>
     const DISCIPLINES = [
-      { value: 'bieg_60m',     label: 'Bieg na 100 m (kliknij by rozwinąć)',          tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_100m',    label: 'Bieg na 200 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_200m',    label: 'Bieg na 400 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_400m',    label: 'Bieg na 800 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_800m',    label: 'Bieg na 1600 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_100m',     label: 'Bieg na 100 m (kliknij by rozwinąć)',          tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_200m',    label: 'Bieg na 200 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_400m',    label: 'Bieg na 400 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_800m',    label: 'Bieg na 800 m',         tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'bieg_1600m',    label: 'Bieg na 1600 m',         tag: '2 kobiety + 2 mężczyzn' },
       { value: 'sztafeta',     label: 'Sztafeta 4×200 m',      tag: '4 kobiety + 4 mężczyzn' },
-      { value: 'skok_dal',     label: 'Bieg przez płotki 110 m /100 m',            tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'skok_wzwyz',   label: 'Pchnięcie kulą',            tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'kula',         label: 'Rzut piłką lekarską',        tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'dysk',         label: 'Skok wzwyż',          tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'oszczep',      label: 'Skok w dal z miejsca',        tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'integracja',   label: 'Przeciąganie liny', tag: '6 kobiet + 6 mężczyzn, którzy są zapisani na co najmniej jedną inną dyscyplinę' },
+      { value: 'bieg_plotki',     label: 'Bieg przez płotki 110 m /100 m',            tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'pchniecie_kula',   label: 'Pchnięcie kulą',            tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'pilka_lekarska',         label: 'Rzut piłką lekarską',        tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'skok_wzwyz',         label: 'Skok wzwyż',          tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'skok_w_dal',      label: 'Skok w dal z miejsca',        tag: '2 kobiety + 2 mężczyzn' },
+      { value: 'przeciaganie_liny',   label: 'Przeciąganie liny', tag: '6 kobiet + 6 mężczyzn, którzy są zapisani na co najmniej jedną inną dyscyplinę' },
     ];
   
     const MAX_DISCS = 12;
@@ -612,28 +612,33 @@
   ═══════════════════════════════════════════════ -->
   <section id="sponsorzy">
     <div class="section-inner">
-      <div class="section-label">06 — Sponsorzy i Partnerzy</div>
+      <div class="section-label">05 — Sponsorzy i Partnerzy</div>
       <h2 class="section-title section-title--center">Wspierają<br>nasze igrzyska</h2>
 
       <div class="sponsors-tier">
-        <div class="sponsors-tier-label">Patronat honorowy</div>
+        <div class="sponsors-tier-label">Sponsor główny</div>
         <div class="sponsors-logos sponsors-logos--main">
-          <div class="sponsor-placeholder sponsor-placeholder--lg">LOGO</div>
-          <div class="sponsor-placeholder sponsor-placeholder--lg">LOGO</div>
           <div class="sponsor-placeholder sponsor-placeholder--lg">LOGO</div>
         </div>
       </div>
 
       <div class="sponsors-tier">
-        <div class="sponsors-tier-label">Sponsorzy wydarzenia</div>
+        <div class="sponsors-tier-label">Partnerzy wydarzenia</div>
         <div class="sponsors-logos">
           <div class="sponsor-placeholder">LOGO</div>
           <div class="sponsor-placeholder">LOGO</div>
           <div class="sponsor-placeholder">LOGO</div>
-          <div class="sponsor-placeholder">LOGO</div>
-          <div class="sponsor-placeholder">LOGO</div>
         </div>
       </div>
+
+      <div class="sponsors-tier">
+        <div class="sponsors-tier-label">Patronat honorowy</div>
+        <div class="sponsors-logos">
+          <div class="patron-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Patronat honorowy Prezydenta m.st. Warszawy
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -730,20 +735,21 @@
     </div>
   </section>
 
-    <!-- ═══════════════════════════════════════════════
+      <!-- ═══════════════════════════════════════════════
        WAŻNE DOKUMENTY
   ═══════════════════════════════════════════════ -->
   <section id="dokumenty">
     <div class="section-inner">
       <div class="section-label">09 — Ważne dokumenty</div>
         <div class="hero-buttons"> <!-- obv nie jest designated formatowanie ale jak cos to po prostu copy-paste-adjust (tylko pamietac zeby zmienic nazwe) -->
-        <a href="Regulamin LIWSP.pdf" download="test-download" target="_blank" class="btn btn--primary">Zobacz regulamin Letnich Igrzysk Warszawskich</a>
-
-<!--        <a href="#konkurencje" class="btn btn--secondary">Poznaj konkurencje</a> -->
+        <a href="Regulamin LIWSP.pdf" target="blank" class="btn btn--primary">Zobacz regulamin Letnich Igrzysk Warszawskich</a>
+        <a href="Regulamin LIWSP.pdf" download="Regulamin Letnich Igrzysk Warszawskich" class="btn btn--primary">Pobierz regulamin Letnich Igrzysk Warszawskich</a>
+<!--    <a href="zgoda rodzica lub pelnoletniego ucznia" class="btn btn--secondary">zobacz/pobierz zgode rodzica lub pelnoletniego ucznia</a> -->
       </div>
       </div>
     </div>
   </section>
+
 
   <!-- ═══════════════════════════════════════════════
        FOOTER
