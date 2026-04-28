@@ -1101,6 +1101,8 @@ section { padding: var(--section-pad) 2rem; }
   margin-bottom: 1.5rem;
 }
 .sponsors-logos {
+  max-width: 500px;
+  width: auto; height: auto;
   display: flex; flex-wrap: wrap; gap: 1.5rem;
   align-items: center;
   justify-content: center;
