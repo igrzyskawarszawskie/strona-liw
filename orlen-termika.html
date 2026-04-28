@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORLEN Termika — Partner LIW</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --navy: #0D1F3C;
+    --navy-dark: #07111F;
+    --cream: #F5F0E8;
+    --text-light: #D4CCB8;
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+ 
+  body {
+    background: var(--navy-dark);
+    color: var(--cream);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+ 
+  /* ── NAV BACK ── */
+  .nav-back {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(7,17,31,.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,.12);
+  }
+ 
+  .nav-back a {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: .1em;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity .2s;
+  }
+  .nav-back a:hover { opacity: .7; }
+ 
+  .nav-liw {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: .12em;
+    color: var(--cream);
+  }
+ 
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px 40px;
+    max-width: 820px;
+    margin: 0 auto;
+    width: 100%;
+  }
+ 
+  /* ── PARTNER BADGE ── */
+  .partner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(201,168,76,.4);
+    padding: 7px 20px;
+    margin-bottom: 40px;
+    animation: fadeUp .6s .1s both;
+  }
+ 
+  .partner-badge span {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+ 
+  .partner-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: .6;
+  }
+ 
+  /* ── LOGO ── */
+  .logo-wrap {
+    width: 100%;
+    max-width: 380px;
+    margin-bottom: 48px;
+    animation: fadeUp .6s .2s both;
+  }
+ 
+  .logo-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* subtle light treatment so white logo sits on dark bg */
+    filter: drop-shadow(0 2px 24px rgba(201,168,76,.08));
+  }
+ 
+  /* ── DIVIDER ── */
+  .divider {
+    width: 60px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+    animation: fadeUp .6s .3s both;
+  }
+ 
+  /* ── DESCRIPTION ── */
+  .description {
+    font-size: clamp(16px, 2.2vw, 20px);
+    line-height: 1.85;
+    color: var(--text-light);
+    text-align: center;
+    max-width: 680px;
+    animation: fadeUp .6s .4s both;
+  }
+ 
+  .description strong {
+    color: var(--cream);
+    font-weight: 400;
+  }
+ 
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(201,168,76,.12);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    letter-spacing: .12em;
+    color: rgba(212,204,184,.35);
+    text-transform: uppercase;
+    animation: fadeUp .6s .5s both;
+  }
+ 
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+ 
+  @media (max-width: 500px) {
+    .logo-wrap { max-width: 260px; }
+    main { padding-top: 88px; }
+  }
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav class="nav-back">
+  <a href="index.html">← Powrót</a>
+  <span class="nav-liw">LIW '26</span>
+</nav>
+ 
+<!-- MAIN -->
+<main>
+ 
+  <div class="partner-badge">
+    <div class="partner-dot"></div>
+    <span>Partner Letnich Igrzysk Warszawskich</span>
+    <div class="partner-dot"></div>
+  </div>
+ 
+  <div class="logo-wrap">
+    <img src="orlen_poziom.jpg" alt="ORLEN Termika S.A.">
+  </div>
+ 
+  <div class="divider"></div>
+ 
+  <p class="description">
+    <strong>ORLEN Termika S.A.</strong> jest producentem ciepła i energii elektrycznej
+    dla aglomeracji warszawskiej, wytwarzanych efektywną metodą kogeneracji.
+    Elektrociepłownie i ciepłownie warszawskie oraz zakład w Pruszkowie produkują łącznie
+    <strong>11% całego wytwarzanego w Polsce ciepła</strong>, przy czym Elektrociepłownia
+    Siekierki jest największym tego typu obiektem w Unii Europejskiej.
+    <br><br>
+    Zakłady ORLEN Termika S.A. obrały kierunek na zrównoważony rozwój. Nowe jednostki
+    produkcyjne — kotły gazowe, biomasowe i elektrodowe, a także pompy ciepła — będą
+    stopniowo zastępować wyeksploatowane jednostki węglowe, by do <strong>2035 roku</strong>
+    ORLEN Termika S.A. mogła całkowicie odejść od produkcji opartej na węglu.
+  </p>
+ 
+</main>
+ 
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">LIW <span>'26</span></div>
+      <div class="footer-school">
+        XXXIII Liceum Ogólnokształcące Dwujęzyczne<br>
+        im. Mikołaja Kopernika · Warszawa
+      </div>
+      <div class="footer-copy">© 2026 Letnie Igrzyska Warszawskie Szkół Ponadpodstawowych</div>
+    </div>
+  </footer>
+ 
+</body>
+</html>
+ 
