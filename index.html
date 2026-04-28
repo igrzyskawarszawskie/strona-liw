@@ -182,13 +182,11 @@
   
   <script>
     const DISCIPLINES = [
-      { value: 'bieg_100m',     label: 'Bieg na 100 m (kliknij by rozwinąć)',          tag: '2 kobiety + 2 mężczyzn' },
       { value: 'bieg_200m',    label: 'Bieg na 200 m',         tag: '2 kobiety + 2 mężczyzn' },
       { value: 'bieg_400m',    label: 'Bieg na 400 m',         tag: '2 kobiety + 2 mężczyzn' },
       { value: 'bieg_800m',    label: 'Bieg na 800 m',         tag: '2 kobiety + 2 mężczyzn' },
       { value: 'bieg_1600m',    label: 'Bieg na 1600 m',         tag: '2 kobiety + 2 mężczyzn' },
       { value: 'sztafeta',     label: 'Sztafeta 4×200 m',      tag: '4 kobiety + 4 mężczyzn' },
-      { value: 'bieg_plotki',     label: 'Bieg przez płotki 110 m /100 m',            tag: '2 kobiety + 2 mężczyzn' },
       { value: 'pchniecie_kula',   label: 'Pchnięcie kulą',            tag: '2 kobiety + 2 mężczyzn' },
       { value: 'pilka_lekarska',         label: 'Rzut piłką lekarską',        tag: '2 kobiety + 2 mężczyzn' },
       { value: 'skok_wzwyz',         label: 'Skok wzwyż',          tag: '2 kobiety + 2 mężczyzn' },
@@ -494,7 +492,7 @@
               <tr><td>400 m</td><td>2</td><td>2</td></tr>
               <tr><td>800 m</td><td>2</td><td>2</td></tr>
               <tr><td>1600 m</td><td>2</td><td>2</td></tr>
-              <tr><td>Sztafeta 4 × 100 m</td><td>4</td><td>4</td></tr>
+              <tr><td>Sztafeta 4 × 200 m</td><td>4</td><td>4</td></tr>
             </tbody>
           </table>
         </div>
@@ -568,7 +566,7 @@
   ═══════════════════════════════════════════════ -->
   <section id="miejsce">
     <div class="section-inner">
-      <div class="section-label">04 — Miejsce</div>
+      <div class="section-label">05 — Miejsce</div>
       <div class="venue-grid">
         <div class="venue-info">
           <h2 class="section-title">Stadion<br><em>Podskarbińska</em></h2>
@@ -601,7 +599,7 @@
   ═══════════════════════════════════════════════ -->
   <section id="sponsorzy">
     <div class="section-inner">
-      <div class="section-label">05 — Sponsorzy i Partnerzy</div>
+      <div class="section-label">06 — Sponsorzy i Partnerzy</div>
       <h2 class="section-title section-title--center">Wspierają<br>nasze igrzyska</h2>
 
       <div class="sponsors-tier">
@@ -616,11 +614,11 @@
       <div class="sponsors-tier">
         <div class="sponsors-tier-label">Partnerzy i sponsorzy wydarzenia</div>
         <div class="sponsors-logos">
+          <img class="sponsors-logos" src="orlen poziom.jpg" alt="Orlen Termika - PARTNER" href="orlen-termika.html">Orlen Termika</img>
           <div class="sponsor-placeholder">LOGO</div>
           <div class="sponsor-placeholder">LOGO</div>
-          <div class="sponsor-placeholder">LOGO</div>
-          <div class="sponsor-placeholder">LOGO</div>
-          <div class="sponsor-placeholder">LOGO</div>
+<!--          <div class="sponsor-placeholder">LOGO</div>
+          <div class="sponsor-placeholder">LOGO</div> -->
         </div>
       </div>
     </div>
@@ -631,7 +629,7 @@
   ═══════════════════════════════════════════════ -->
   <section id="galeria">
     <div class="section-inner">
-      <div class="section-label">06 — Galeria</div>
+      <div class="section-label">07 — Galeria</div>
       <h2 class="section-title section-title--center">Zdjęcia</h2>
       <div class="gallery-grid">
 <!--    <div class="gallery-placeholder gallery-placeholder--wide">📸 Zdjęcia pojawią się wkrótce</div> -->
@@ -675,7 +673,7 @@
   ═══════════════════════════════════════════════ -->
   <section id="kontakt">
     <div class="section-inner">
-      <div class="section-label">07 — Kontakt</div>
+      <div class="section-label">08 — Kontakt</div>
       <div class="contact-grid">
         <div class="contact-info">
           <h2 class="section-title">Masz<br>pytania?</h2>
@@ -717,7 +715,7 @@
   ═══════════════════════════════════════════════ -->
   <section id="dokumenty">
     <div class="section-inner">
-      <div class="section-label">08 — Ważne dokumenty</div>
+      <div class="section-label">09 — Ważne dokumenty</div>
         <div class="hero-buttons"> <!-- obv nie jest designated formatowanie ale jak cos to po prostu copy-paste-adjust (tylko pamietac zeby zmienic nazwe) -->
         <a href="Regulamin LIWSP.pdf" target="blank" class="btn btn--primary">Regulamin Letnich Igrzysk Warszawskich</a>
         <a href="Zgoda rodzica.pdf" target="_blank" class="btn btn--secondary">Zgoda rodzica nieletniego Uczestnika</a>
@@ -745,7 +743,7 @@
   <script>
     // ── COUNTDOWN ──────────────────────────────────────────────────
     function updateCountdown() {
-      const target = new Date('2026-06-22T09:00:00');
+      const target = new Date('2026-06-22T08:00:00');
       const now = new Date();
       const diff = target - now;
       if (diff <= 0) {
