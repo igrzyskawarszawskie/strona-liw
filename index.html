@@ -116,236 +116,6 @@
       <div class="scroll-arrow"></div>
     </div>
   </section>
-  <!-- ═══════════════════════════════════════════════
-       FORMULARZ ZAPISOWY
-  ═══════════════════════════════════════════════ -->
-  <div class="sep"></div>
-  
-  <div class="reg-section" id="zapisy">
-  
-    <!-- HEADER -->
-    <p class="section-label">01 - Rejestracja zawodników</p>
-    <h2>Formularz zapisowy</h2>
-    <p class="intro-text">Zgłoś zawodników ze swojej szkoły do nawet dwunastu dyscyplin! Możesz zapisać więcej zawodników niż dozwolone - będą oni rezerwowymi (kolejność ma znaczenie). Do zobaczenia!</p>
-  
-    <!-- FORM -->
-    <form id="regForm" novalidate>
-  
-      <!-- DANE OPIEKUNA -->
-      <div class="contact-grid">
-        <div class="field-group">
-          <label class="field-label" for="guardian">Imię i nazwisko opiekuna *</label>
-          <input type="text" id="guardian" name="guardian" placeholder="Jan Kowalski" required>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="school">Szkoła *</label>
-          <input type="text" id="school" name="school" placeholder="Pełna nazwa szkoły" required>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="email">Email kontaktowy *</label>
-          <input type="email" id="email" name="email" placeholder="opiekun@szkola.pl" required>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="phone">Telefon kontaktowy</label>
-          <input type="tel" id="phone" name="phone" placeholder="+48 000 000 000">
-        </div>
-      </div>
-  
-      <!-- DYSCYPLINY -->
-      <div class="disciplines-header">
-        <div>
-          <p class="section-label" style="margin:0">Dyscypliny i zawodnicy</p>
-        </div>
-        <div class="disc-counter">Dodano: <span id="disc-count">0</span> / 12</div>
-      </div>
-  
-      <div id="disc-list"></div>
-  
-      <button type="button" class="btn-add-disc" id="btn-add-disc">
-        <span class="plus">+</span> Dodaj dyscyplinę
-      </button>
-  
-      <!-- SUBMIT -->
-      <button type="submit" class="submit-btn" id="submitBtn">Wyślij zgłoszenie</button>
-      <div class="form-status" id="formStatus"></div>
-  
-    </form>
-  
-    <!-- CONFIRM -->
-    <div id="reg-confirm">
-      <div class="medal">🏅</div>
-      <h3>Zgłoszenie przyjęte!</h3>
-      <p>Dziękujemy za rejestrację. Skontaktujemy się wkrótce z potwierdzeniem i szczegółami organizacyjnymi.</p>
-    </div>
-  
-  </div>
-  
-  <script>
-    const DISCIPLINES = [
-      { value: 'bieg_200m',    label: 'Bieg na 200 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_400m',    label: 'Bieg na 400 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_800m',    label: 'Bieg na 800 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'bieg_1600m',    label: 'Bieg na 1600 m',         tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'sztafeta',     label: 'Sztafeta 4×200 m',      tag: '4 kobiety + 4 mężczyzn' },
-      { value: 'pchniecie_kula',   label: 'Pchnięcie kulą',            tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'pilka_lekarska',         label: 'Rzut piłką lekarską',        tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'skok_wzwyz',         label: 'Skok wzwyż',          tag: '2 kobiety + 2 mężczyzn' },
-      { value: 'skok_w_dal',      label: 'Skok w dal z miejsca',        tag: '2 kobiety + 2 mężczyzn' },
-    ];
-  
-    const MAX_DISCS = 11;
-    let discBoxes = [];
-    let discIdCounter = 0;
-  
-    const discList   = document.getElementById('disc-list');
-    const btnAddDisc = document.getElementById('btn-add-disc');
-    const discCount  = document.getElementById('disc-count');
-  
-    function updateCounter() {
-      discCount.textContent = discBoxes.length;
-      btnAddDisc.disabled = discBoxes.length >= MAX_DISCS;
-    }
-  
-    function buildSelectOptions(selectedValue) {
-      return DISCIPLINES.map(d =>
-        `<option value="${d.value}" ${d.value === selectedValue ? 'selected' : ''}>${d.label}</option>`
-      ).join('');
-    }
-  
-    function addDiscBox(disciplineValue) {
-      const id = ++discIdCounter;
-      const defDisc = DISCIPLINES.find(d => d.value === disciplineValue) || DISCIPLINES[0];
-  
-      const box = document.createElement('div');
-      box.className = 'disc-box';
-      box.dataset.id = id;
-  
-      box.innerHTML = `
-        <div class="disc-box-header">
-          <div style="flex:1">
-            <select class="disc-select" data-id="${id}">
-              ${buildSelectOptions(defDisc.value)}
-            </select>
-            <div class="disc-subtitle" id="subtitle-${id}">${defDisc.tag}</div>
-          </div>
-          <button type="button" class="btn-remove-disc" title="Usuń dyscyplinę">×</button>
-        </div>
-        <div class="athletes-body">
-          <div class="athlete-row-labels">
-            <span>Imię</span><span>Nazwisko</span><span>Data ur.</span><span></span>
-          </div>
-          <div class="athlete-rows" id="athletes-${id}"></div>
-          <button type="button" class="btn-add-athlete">+ dodaj zawodnika</button>
-        </div>
-      `;
-  
-      // remove disc
-      box.querySelector('.btn-remove-disc').addEventListener('click', () => {
-        box.remove();
-        discBoxes = discBoxes.filter(b => b.id !== id);
-        updateCounter();
-      });
-  
-      // change discipline
-      box.querySelector('.disc-select').addEventListener('change', function() {
-        const found = DISCIPLINES.find(d => d.value === this.value);
-        document.getElementById(`subtitle-${id}`).textContent = found ? found.tag : '';
-      });
-  
-      // add athlete
-      box.querySelector('.btn-add-athlete').addEventListener('click', () => {
-        addAthleteRow(id);
-      });
-  
-      discList.appendChild(box);
-      discBoxes.push({ id });
-      updateCounter();
-      addAthleteRow(id); // start with 1 row
-    }
-  
-    function addAthleteRow(discId) {
-      const container = document.getElementById(`athletes-${discId}`);
-      const row = document.createElement('div');
-      row.className = 'athlete-row';
-      row.innerHTML = `
-        <input type="text" placeholder="Imię" class="a-name">
-        <input type="text" placeholder="Nazwisko" class="a-surname">
-        <input type="date" class="a-dob" title="Data urodzenia">
-        <button type="button" class="remove-athlete" title="Usuń zawodnika">×</button>
-      `;
-      row.querySelector('.remove-athlete').addEventListener('click', () => row.remove());
-      container.appendChild(row);
-    }
-  
-    btnAddDisc.addEventListener('click', () => {
-      if (discBoxes.length < MAX_DISCS) addDiscBox();
-    });
-  
-    // ── SUBMIT ──
-    document.getElementById('regForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-  
-      const guardian = document.getElementById('guardian').value.trim();
-      const school   = document.getElementById('school').value.trim();
-      const email    = document.getElementById('email').value.trim();
-      const phone    = document.getElementById('phone').value.trim();
-  
-      if (!guardian || !school || !email) {
-        showStatus('Proszę wypełnić wszystkie wymagane pola (opiekun, szkoła, email).', 'error');
-        return;
-      }
-  
-      // collect disciplines
-      const disciplines = [];
-      discList.querySelectorAll('.disc-box').forEach(box => {
-        const discValue = box.querySelector('.disc-select').value;
-        const discLabel = DISCIPLINES.find(d => d.value === discValue)?.label || discValue;
-        const athletes  = [];
-        box.querySelectorAll('.athlete-row').forEach(row => {
-          const name    = row.querySelector('.a-name').value.trim();
-          const surname = row.querySelector('.a-surname').value.trim();
-          const dob     = row.querySelector('.a-dob').value;
-          if (name || surname) athletes.push({ name, surname, dob });
-        });
-        disciplines.push({ discipline: discValue, disciplineLabel: discLabel, athletes });
-      });
-  
-      const payload = { guardian, school, email, phone, disciplines };
-  
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-      btn.textContent = 'Wysyłanie…';
-  
-      try {
-        const res = await fetch('/.netlify/functions/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-  
-        const data = await res.json();
-  
-        if (res.ok) {
-          document.getElementById('regForm').style.display = 'none';
-          document.getElementById('reg-confirm').style.display = 'block';
-        } else {
-          showStatus(data.error || 'Wystąpił błąd. Spróbuj ponownie.', 'error');
-          btn.disabled = false;
-          btn.textContent = 'Wyślij zgłoszenie';
-        }
-      } catch (err) {
-        showStatus('Błąd połączenia. Sprawdź internet i spróbuj ponownie.', 'error');
-        btn.disabled = false;
-        btn.textContent = 'Wyślij zgłoszenie';
-      }
-    });
-  
-    function showStatus(msg, type) {
-      const el = document.getElementById('formStatus');
-      el.textContent = msg;
-      el.className = `form-status ${type}`;
-    }
-  </script>
 
   <!-- ═══════════════════════════════════════════════
        O WYDARZENIU
@@ -361,20 +131,16 @@
         <div class="about-body">
           <p>Letnie Igrzyska Warszawskie to międzyszkolna inicjatywa młodzieżowa organizowana przez uczniów <strong>XXXIII Liceum Ogólnokształcącego Dwujęzycznego im. Mikołaja Kopernika w Warszawie</strong>.</p>
           <p>Celem projektu jest stworzenie jednodniowego wydarzenia sportowego inspirowanego formułą igrzysk olimpijskich, które umożliwi uczniom warszawskich szkół ponadpodstawowych udział w rywalizacji lekkoatletycznej w profesjonalnych warunkach.</p>
-          <p>Wydarzenie jest otwarte dla uczniów różnych warszawskich liceów i ma promować aktywność fizyczną, zdrowy styl życia oraz integrację młodzieży z różnych środowisk szkolnych.</p>
+          <p>Wydarzenie jest otwarte dla uczniów różnych warszawskich szkół ponadpodstawowych i ma promować aktywność fizyczną, zdrowy styl życia oraz integrację młodzieży z różnych środowisk szkolnych.</p>
 
           <div class="about-stats">
             <div class="stat">
-              <span class="stat-num">6</span>
+              <span class="stat-num">10</span>
               <span class="stat-label">dyscyplin</span>
             </div>
             <div class="stat">
               <span class="stat-num">~7h</span>
               <span class="stat-label">zawodów</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num">48</span>
-              <span class="stat-label">zawodników / szkoła</span>
             </div>
             <div class="stat">
               <span class="stat-num">0 ZŁ</span>
@@ -439,7 +205,7 @@
           <div class="timeline-time timeline-time-extreme">16:30</div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <div class="timeline-event">Ceremonia wręczenia medali</div>
+            <div class="timeline-event">Ceremonia zakończenia</div>
           </div>
         </div>
 
@@ -467,8 +233,6 @@
       <div class="section-label">04 — Konkurencje</div>
       <h2 class="section-title">Program<br>zawodów</h2>
 
-      <p class="competitions-intro">Każda szkoła może wystawić określoną liczbę zawodników w poszczególnych konkurencjach.</p>
-
       <div class="competitions-grid">
 
         
@@ -491,8 +255,8 @@
               <tr><td>200 m</td><td>2</td><td>2</td></tr>
               <tr><td>400 m</td><td>2</td><td>2</td></tr>
               <tr><td>800 m</td><td>2</td><td>2</td></tr>
-              <tr><td>1600 m</td><td>2</td><td>2</td></tr>
-              <tr><td>Sztafeta 4 × 200 m</td><td>4</td><td>4</td></tr>
+              <tr><td>1500 m</td><td>2</td><td>2</td></tr>
+              <tr><td>Sztafeta 4 × 100 m</td><td>4</td><td>4</td></tr>
             </tbody>
           </table>
         </div>
@@ -530,7 +294,7 @@
               </thead>
               <tbody>
                 <tr><td>Skok wzwyż</td><td>2</td><td>2</td></tr>
-                <tr><td>Skok w dal z miejsca</td><td>2</td><td>2</td></tr>
+                <tr><td>Skok w dal z rozbiegu</td><td>2</td><td>2</td></tr>
               </tbody>
             </table>
           </div>
@@ -541,11 +305,11 @@
               <div class="comp-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
               </div>
-              <h3>Konkurencja integracyjna</h3>
+              <h3>???</h3>
             </div>
             <div class="comp-special-body">
-              <div class="comp-special-name">Przeciąganie liny</div>
-              <div class="comp-special-detail">6 zawodników + 6 zawodniczek<br>Punkty dodatkowe do klasyfikacji szkół</div>
+              <div class="comp-special-name">Konkurencja integracyjna</div>
+              <div class="comp-special-detail">Drużyna złożona z 6 zawodników lub zawodniczek<br>Punkty dodatkowe do klasyfikacji szkół</div>
             </div>
           </div>
         </div>
@@ -554,8 +318,6 @@
       <div class="comp-limit-banner">
         <div class="comp-limit-icon">🏅</div>
         <div>
-          <strong>Maksymalna liczba zawodników na szkołę:</strong>
-          20 zawodników + 20 zawodniczek = <strong>40 uczestników</strong>
         </div>
       </div>
     </div>
